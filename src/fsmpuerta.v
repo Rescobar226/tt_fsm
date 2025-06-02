@@ -1,10 +1,12 @@
 module tt_um_Rescobar226 (
-    input  wire clk,
-    input  wire rst_n,
-    input  wire ena,
-    input  wire [7:0] ui_in,     // Cambio aquí
-    output wire [7:0] uo,
-    inout  wire [7:0] uio
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire        ena,
+    input  wire [7:0]  ui_in,
+    output wire [7:0]  uo_out,
+    input  wire [7:0]  uio_in,
+    output wire [7:0]  uio_out,
+    output wire [7:0]  uio_oe
 );
 
     wire Sen = ui_in[0];
@@ -15,7 +17,6 @@ module tt_um_Rescobar226 (
     reg [3:0] S = 4'b0000;
     reg [3:0] S_n;
 
-    // Lógica de transición de estados combinacional
     always @(*) begin
         S_n[3] = ~S[3] & S[2] & ~S[1] & ~S[0] & ~Sen & ~SE & LA;
         S_n[2] = ~S[3] & ~S[2] & S[1] & ~S[0] & Sen & ~SE & ~LC;
@@ -25,7 +26,6 @@ module tt_um_Rescobar226 (
                  (~S[3] & ~S[2] & ~S[1] & ~S[0] & Sen & ~SE & ~LA & LC);
     end
 
-    // Flip-flop con reset asincrónico y enable
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n)
             S <= 4'b0000;
@@ -36,16 +36,17 @@ module tt_um_Rescobar226 (
     wire MA = (S == 4'b0010);
     wire MC = (S == 4'b0100);
 
-    assign uo[0] = MA;
-    assign uo[1] = MC;
-    assign uo[2] = S[0];
-    assign uo[3] = S[1];
-    assign uo[4] = S[2];
-    assign uo[5] = S[3];
-    assign uo[6] = 1'b0;
-    assign uo[7] = 1'b0;
+    assign uo_out[0] = MA;
+    assign uo_out[1] = MC;
+    assign uo_out[2] = S[0];
+    assign uo_out[3] = S[1];
+    assign uo_out[4] = S[2];
+    assign uo_out[5] = S[3];
+    assign uo_out[6] = 1'b0;
+    assign uo_out[7] = 1'b0;
 
-    // Como no usas uio, ponlos en alta impedancia para evitar warnings
-    assign uio = 8'bz;
+    // Si no usas los puertos bidireccionales, desactívalos así:
+    assign uio_out = 8'b0;
+    assign uio_oe  = 8'b0;
 
 endmodule
