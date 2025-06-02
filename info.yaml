@@ -16,7 +16,7 @@ project:
 
   # Archivos fuente en la carpeta src/
   source_files:
-    - "project.v"
+    - "fsmpuerta.v"
 
 # Descripciones de pines (máximo 8 entradas y 8 salidas)
 
