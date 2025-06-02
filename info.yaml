@@ -9,7 +9,7 @@ project:
 
   # Tamaño del diseño: 1x1 normalmente alcanza para FSM simples
   tiles: "1x1"
-
+#cm;lmc
   # Nombre del módulo principal DEBE comenzar con tt_um_ seguido de tu usuario
   # Ejemplo: si tu usuario de GitHub es juanperez
   top_module:  "tt_fsm"
