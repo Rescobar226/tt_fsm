@@ -12,7 +12,7 @@ project:
 #cm;lmc
   # Nombre del módulo principal DEBE comenzar con tt_um_ seguido de tu usuario
   # Ejemplo: si tu usuario de GitHub es juanperez
-  top_module:  "tt_fsm"
+  top_module:  "tt_um_Rescobar226"
 
   # Archivos fuente en la carpeta src/
   source_files:
