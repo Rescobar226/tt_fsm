@@ -1,9 +1,10 @@
 module tt_um_Rescobar226 (
-    input  wire clk,          // Clock obligatorio
-    input  wire ena,          // Enable obligatorio
-    input  wire [7:0] ui,     // Entradas
-    output wire [7:0] uo,     // Salidas
-    inout  wire [7:0] uio     // Bidireccionales (no usados)
+    input  wire clk,
+    input  wire rst_n,
+    input  wire ena,
+    input  wire [7:0] ui,
+    output wire [7:0] uo,
+    inout  wire [7:0] uio
 );
 
     wire Sen = ui[0];
@@ -14,7 +15,7 @@ module tt_um_Rescobar226 (
     reg [3:0] S = 4'b0000;
     reg [3:0] S_n;
 
-    // Lógica de transición (FSM combinacional)
+    // Lógica de transición
     always @(*) begin
         S_n[3] = ~S[3] & S[2] & ~S[1] & ~S[0] & ~Sen & ~SE & LA;
         S_n[2] = ~S[3] & ~S[2] & S[1] & ~S[0] & Sen & ~SE & ~LC;
@@ -24,9 +25,11 @@ module tt_um_Rescobar226 (
                  (~S[3] & ~S[2] & ~S[1] & ~S[0] & Sen & ~SE & ~LA & LC);
     end
 
-    // Actualización del estado en flanco de subida de clk, si ena está activo
-    always @(posedge clk) begin
-        if (ena)
+    // Registro de estado con reset y enable
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            S <= 4'b0000;
+        else if (ena)
             S <= S_n;
     end
 
@@ -42,6 +45,6 @@ module tt_um_Rescobar226 (
     assign uo[6] = 1'b0;
     assign uo[7] = 1'b0;
 
-    assign uio = 8'bZ;  // No usamos los bidireccionales
+    assign uio = 8'bZ;
 
 endmodule
