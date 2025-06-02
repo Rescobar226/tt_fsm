@@ -1,24 +1,14 @@
-# Tiny Tapeout project information
 project:
   title:        "Final - Serie 2: Puerta Automática"
   author:       "Rodrigo E. Escobar"
-  discord:      ""  # Opcional, si tenés cuenta en Discord
+  discord:      ""
   description:  "FSM para controlar una puerta automática con lógica Moore-Mealy"
   language:     "Verilog"
-  clock_hz:     1  # El diseño usa un clock lento (dividido), así que podés poner 1 Hz o 0 si es puro combinacional
-
-  # Tamaño del diseño: 1x1 normalmente alcanza para FSM simples
-  tiles: "1x1"
-#cm;lmc
-  # Nombre del módulo principal DEBE comenzar con tt_um_ seguido de tu usuario
-  # Ejemplo: si tu usuario de GitHub es juanperez
-  top_module:  "tt_um_Rescobar226"
-
-  # Archivos fuente en la carpeta src/
+  clock_hz:     1
+  tiles:        "1x1"
+  top_module:   "tt_um_Rescobar226"
   source_files:
     - "fsmpuerta.v"
-
-# Descripciones de pines (máximo 8 entradas y 8 salidas)
 
 pinout:
   ui[0]: "Sen"
@@ -48,8 +38,4 @@ pinout:
   uio[6]: ""
   uio[7]: ""
 
-
-
-# No tocar
 yaml_version: 6
-
