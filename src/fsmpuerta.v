@@ -1,4 +1,5 @@
 module tt_um_Rescobar226 (
+    input  wire clk, 
     input  wire [7:0] ui,   // ui[0]=Sen, ui[1]=SE, ui[2]=LA, ui[3]=LC
     output wire [7:0] uo    // uo[0]=MA, uo[1]=MC, uo[5:2]=S[3:0]
 );
