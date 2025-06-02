@@ -21,35 +21,32 @@ project:
 # Descripciones de pines (máximo 8 entradas y 8 salidas)
 
 pinout:
-  # Inputs
-  ui[0]: "Sen"
-  ui[1]: "SE"
-  ui[2]: "LA"
-  ui[3]: "LC"
-  ui[4]: "Reset"   # Opcional si lo usás
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui_in[0]: "Sen"
+  ui_in[1]: "SE"
+  ui_in[2]: "LA"
+  ui_in[3]: "LC"
+  ui_in[4]: ""
+  ui_in[5]: ""
+  ui_in[6]: ""
+  ui_in[7]: ""
 
-  # Outputs
-  uo[0]: "MA"      # Motor Abrir
-  uo[1]: "MC"      # Motor Cerrar
-  uo[2]: "S[0]"    # Estado (debug opcional)
-  uo[3]: "S[1]"
-  uo[4]: "S[2]"
-  uo[5]: "S[3]"
-  uo[6]: ""
-  uo[7]: ""
+  uo_out[0]: "MA"
+  uo_out[1]: "MC"
+  uo_out[2]: "S[0]"
+  uo_out[3]: "S[1]"
+  uo_out[4]: "S[2]"
+  uo_out[5]: "S[3]"
+  uo_out[6]: ""
+  uo_out[7]: ""
 
-  # Bidirectional pins (no usados)
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio_inout[0]: ""
+  uio_inout[1]: ""
+  uio_inout[2]: ""
+  uio_inout[3]: ""
+  uio_inout[4]: ""
+  uio_inout[5]: ""
+  uio_inout[6]: ""
+  uio_inout[7]: ""
 
 # No tocar
 yaml_version: 6
