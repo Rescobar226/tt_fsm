@@ -6,7 +6,7 @@ project:
   language:     "Verilog"
   clock_hz:     1
   tiles:        "1x1"
-  top_module:   "fsmpuerta"
+  top_module:   "tt_module_Rescobar226"
   source_files:
     - "fsmpuerta.v"
 
