@@ -1,11 +1,10 @@
 module tt_um_Rescobar226 (
-    input  wire clk, 
-    input  wire [7:0] ui,   // ui[0]=Sen, ui[1]=SE, ui[2]=LA, ui[3]=LC
-    output wire [7:0] uo    // uo[0]=MA, uo[1]=MC, uo[5:2]=S[3:0]
+    input  wire clk,          // Clock obligatorio
+    input  wire ena,          // Enable obligatorio
+    input  wire [7:0] ui,     // Entradas
+    output wire [7:0] uo,     // Salidas
+    inout  wire [7:0] uio     // Bidireccionales (no usados)
 );
-
-    wire clk;
-    assign clk = 1'b1;  // TinyTapeout usa clock interno, simulamos 1 Hz
 
     wire Sen = ui[0];
     wire SE  = ui[1];
@@ -15,7 +14,7 @@ module tt_um_Rescobar226 (
     reg [3:0] S = 4'b0000;
     reg [3:0] S_n;
 
-    // Lógica de transición de estados (combinacional)
+    // Lógica de transición (FSM combinacional)
     always @(*) begin
         S_n[3] = ~S[3] & S[2] & ~S[1] & ~S[0] & ~Sen & ~SE & LA;
         S_n[2] = ~S[3] & ~S[2] & S[1] & ~S[0] & Sen & ~SE & ~LC;
@@ -25,16 +24,15 @@ module tt_um_Rescobar226 (
                  (~S[3] & ~S[2] & ~S[1] & ~S[0] & Sen & ~SE & ~LA & LC);
     end
 
-    // Flip-flops de estado (con clock lento simulado)
+    // Actualización del estado en flanco de subida de clk, si ena está activo
     always @(posedge clk) begin
-        S <= S_n;
+        if (ena)
+            S <= S_n;
     end
 
-    // Lógica de salida
-    wire MA = (S == 4'b0010);  // estado de abrir
-    wire MC = (S == 4'b0100);  // estado de cerrar
+    wire MA = (S == 4'b0010);
+    wire MC = (S == 4'b0100);
 
-    // Asignar salidas
     assign uo[0] = MA;
     assign uo[1] = MC;
     assign uo[2] = S[0];
@@ -43,5 +41,7 @@ module tt_um_Rescobar226 (
     assign uo[5] = S[3];
     assign uo[6] = 1'b0;
     assign uo[7] = 1'b0;
+
+    assign uio = 8'bZ;  // No usamos los bidireccionales
 
 endmodule
