@@ -16,7 +16,7 @@ project:
 
   # Archivos fuente en la carpeta src/
   source_files:
-    - "final_serie2.xpr"
+    - "project.v"
 
 # Descripciones de pines (máximo 8 entradas y 8 salidas)
 
