@@ -1,4 +1,4 @@
-module tt_um_Rescobar226 (
+module fsmpuerta (
     input  wire        clk,
     input  wire        rst_n,
     input  wire        ena,
