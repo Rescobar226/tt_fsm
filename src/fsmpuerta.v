@@ -2,15 +2,15 @@ module tt_um_Rescobar226 (
     input  wire clk,
     input  wire rst_n,
     input  wire ena,
-    input  wire [7:0] ui,     // Entradas dedicadas
-    output wire [7:0] uo,     // Salidas dedicadas
-    inout  wire [7:0] uio     // IO bidireccional
+    input  wire [7:0] ui_in,     // Cambio aquí
+    output wire [7:0] uo,
+    inout  wire [7:0] uio
 );
 
-    wire Sen = ui[0];
-    wire SE  = ui[1];
-    wire LA  = ui[2];
-    wire LC  = ui[3];
+    wire Sen = ui_in[0];
+    wire SE  = ui_in[1];
+    wire LA  = ui_in[2];
+    wire LC  = ui_in[3];
 
     reg [3:0] S = 4'b0000;
     reg [3:0] S_n;
