@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        Final - Serie 2: Puerta Automática
+  title:        "Final - Serie 2: Puerta Automática"
   author:       "Rodrigo E. Escobar"
   discord:      ""  # Opcional, si tenés cuenta en Discord
   description:  "FSM para controlar una puerta automática con lógica Moore-Mealy"
