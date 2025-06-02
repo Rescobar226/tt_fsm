@@ -48,6 +48,7 @@ pinout:
   uio_inout[6]: ""
   uio_inout[7]: ""
 
+
 # No tocar
 yaml_version: 6
 
